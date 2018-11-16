@@ -2,26 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginBottom="5dp"
-    android:orientation="horizontal"
-    tools:context=".FeederActivity">
+    android:background="#ffffff"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
 
-    <ImageView
+    <kr.ac.koreatech.cultureman.musicallife.FeederRadiusImageView
         android:id="@+id/musical_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_alignParentTop = "true"
+        android:layout_centerHorizontal = "true"
+        android:layout_margin="3dp"
         android:layout_gravity="center_vertical"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:layout_weight = "1"
+        android:src="@drawable/ic_launcher_background" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="20"
+        android:layout_gravity="center_vertical"
         android:orientation="vertical">
 
         <TextView
@@ -30,7 +37,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="The Phantom of the Opera"
-            android:textSize="20sp" />
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/muscial_location"
@@ -38,7 +45,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="cheonan"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/musical_date"
@@ -46,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:text="2018/12/01~2018/12/31"
-            android:textSize="13sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -56,6 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="3dp"
-        android:text="subscribe" />
+        android:layout_marginRight="3dp"
+        android:layout_weight="1"
+        android:text="Sub" />
 
 </LinearLayout>
