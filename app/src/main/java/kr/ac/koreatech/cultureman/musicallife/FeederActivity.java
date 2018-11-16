@@ -10,7 +10,7 @@ public class FeederActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitvity_feeder_listview);
+        setContentView(R.layout.activity_feeder_listview);
 
         ListView feeder;
         FeederListViewAdapter feederAdapter;
