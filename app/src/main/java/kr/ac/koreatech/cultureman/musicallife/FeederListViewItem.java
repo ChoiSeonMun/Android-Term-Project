@@ -3,7 +3,7 @@ package kr.ac.koreatech.cultureman.musicallife;
 import android.graphics.drawable.Drawable;
 
 public class FeederListViewItem {
-
+    
     private Drawable musicalImage;
     private String musicalTitle;
     private String musicalPlace;
