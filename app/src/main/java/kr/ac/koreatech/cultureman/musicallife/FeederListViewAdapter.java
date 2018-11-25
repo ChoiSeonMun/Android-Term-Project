@@ -2,20 +2,27 @@ package kr.ac.koreatech.cultureman.musicallife;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 
-public class FeederListViewAdapter extends BaseAdapter {
+public class FeederListViewAdapter extends ArrayAdapter {
+
+    int resourceId;
 
     FeederRadiusImageView musicalImageView;
     private ArrayList<FeederListViewItem> feederList = new ArrayList<FeederListViewItem>();
 
-    public FeederListViewAdapter() {
+    public FeederListViewAdapter(Context context, int resource, ArrayList<FeederListViewItem> list) {
+        super(context, resource, list);
+        this.resourceId = resource;
 
     }
 
@@ -39,9 +46,11 @@ public class FeederListViewAdapter extends BaseAdapter {
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
         FeederRadiusImageView musicalImageView = (FeederRadiusImageView) convertView.findViewById(R.id.musical_image);
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.muscial_title);
-        TextView placeTextView = (TextView) convertView.findViewById(R.id.muscial_location);
+        TextView titleTextView = (TextView) convertView.findViewById(R.id.muscial_title);
+        TextView placeTextView = (TextView) convertView.findViewById(R.id.muscial_place);
         TextView dateTextView = (TextView) convertView.findViewById(R.id.musical_date);
+        ToggleButton subButton = (ToggleButton) convertView.findViewById(R.id.musical_subscribe_button);
+
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         FeederListViewItem feederListViewItem = feederList.get(position);
@@ -49,9 +58,10 @@ public class FeederListViewAdapter extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
 
         musicalImageView.setImageDrawable(feederListViewItem.getMusicalImage());
-        nameTextView.setText(feederListViewItem.getMusicalTitle());
+        titleTextView.setText(feederListViewItem.getMusicalTitle());
         placeTextView.setText(feederListViewItem.getMusicalPlace());
         dateTextView.setText(feederListViewItem.getMusicalDate());
+        //subButton.setTag(feederListViewItem.getMusicalTitle());
 
         return convertView;
     }
