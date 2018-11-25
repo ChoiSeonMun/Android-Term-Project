@@ -34,9 +34,9 @@ public class FeederActivity extends AppCompatActivity {
         feeder.setAdapter(feederAdapter);
 
         //임의로 넣은 값
-        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "Phantom", "Cheonan", "2018/12/01~2018/12/31");
-        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "Phantom2", "Cheonan", "2018/12/01~2018/12/31");
-        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "Phantom3", "Cheonan", "2018/12/01~2018/12/31");
+        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "엘리자벳", "블루스퀘어 인터파크홀(구 삼성전자홀)", "2018/11/17 ~ 2019/02/10");
+        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "태양의 서커스 - 쿠자", "잠실종합운동장 내 빅탑", "2018/11/03 ~ 2019/01/06");
+
 
         feeder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
