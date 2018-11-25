@@ -50,17 +50,12 @@ public class FeederActivity extends AppCompatActivity {
                 String placeStr = item.getMusicalPlace();
                 String dateStr = item.getMusicalDate();
 
-                // 클릭 이벤트 테스트용 인텐트
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
-                startActivity(intent);
-
-//              실제 사용할 인텐트
-//                Intent getInfo = new Intent();//실행할 엑티비티명 입력
-//                getInfo.putExtra("image",imageBitmap); // 이미지 넘기기
-//                getInfo.putExtra("title",titleStr); // 제목 넘기기
-//                getInfo.putExtra("place",placeStr); // 장소 넘기기
-//                getInfo.putExtra("date",dateStr); // 기간 넘기기
-//                startActivity(getInfo);
+                Intent getInfo = new Intent(getApplicationContext(),InfoActivity.class);//실행할 엑티비티명 입력
+                getInfo.putExtra("image",imageBitmap); // 이미지 넘기기
+                getInfo.putExtra("title",titleStr); // 제목 넘기기
+                getInfo.putExtra("place",placeStr); // 장소 넘기기
+                getInfo.putExtra("date",dateStr); // 기간 넘기기
+                startActivity(getInfo);
             }
         });
 

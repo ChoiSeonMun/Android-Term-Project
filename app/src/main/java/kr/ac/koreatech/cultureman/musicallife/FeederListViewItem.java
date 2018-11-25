@@ -3,12 +3,11 @@ package kr.ac.koreatech.cultureman.musicallife;
 import android.graphics.drawable.Drawable;
 
 public class FeederListViewItem {
-    
+
     private Drawable musicalImage;
     private String musicalTitle;
     private String musicalPlace;
     private String musicalDate;
-
 
     public Drawable getMusicalImage() {
         return musicalImage;
@@ -41,4 +40,5 @@ public class FeederListViewItem {
     public void setMusicalDate(String musicalDate) {
         this.musicalDate = musicalDate;
     }
+
 }
