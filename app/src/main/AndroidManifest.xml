@@ -19,7 +19,7 @@
         <activity android:name=".CalendarActivity"></activity>
         <activity
             android:name=".InfoActivity"
-            android:label="Activity2">
+            android:label="Info">
         </activity>
     </application>
 

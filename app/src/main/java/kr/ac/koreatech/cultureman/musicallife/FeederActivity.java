@@ -51,7 +51,11 @@ public class FeederActivity extends AppCompatActivity {
                 String dateStr = item.getMusicalDate();
 
                 // 클릭 이벤트 테스트용 인텐트
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+=======
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
+>>>>>>> 9067829963054cf787ec720f8ad87bee6f34129c
                 startActivity(intent);
 
 //              실제 사용할 인텐트
