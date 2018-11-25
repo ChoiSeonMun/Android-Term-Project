@@ -1,9 +1,20 @@
 package kr.ac.koreatech.cultureman.musicallife;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
 
 public class FeederActivity extends AppCompatActivity {
 
@@ -12,15 +23,59 @@ public class FeederActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeder_listview);
 
+        final ArrayList<FeederListViewItem> items = new ArrayList<>();
+
         ListView feeder;
         FeederListViewAdapter feederAdapter;
 
-        feederAdapter = new FeederListViewAdapter();
+        feederAdapter = new FeederListViewAdapter(getApplicationContext(), R.layout.activity_feeder, items);
 
         feeder = (ListView) findViewById(R.id.listview_newsfeed);
         feeder.setAdapter(feederAdapter);
 
         //임의로 넣은 값
-        feederAdapter.addItem(ContextCompat.getDrawable(this,R.drawable.ic_launcher_background),"Phantom","Cheonan","2018/12/01~2018/12/31");
+        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "Phantom", "Cheonan", "2018/12/01~2018/12/31");
+        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "Phantom2", "Cheonan", "2018/12/01~2018/12/31");
+        feederAdapter.addItem(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background), "Phantom3", "Cheonan", "2018/12/01~2018/12/31");
+
+        feeder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //아이템 데이터 받아오기
+                FeederListViewItem item = (FeederListViewItem) parent.getItemAtPosition(position);
+                Drawable imageDrawable = item.getMusicalImage();
+                //이미지를 Bitmap객채로 만들기(근데 프로젝트 안에 있는 이미지만 되는듯?)
+                Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground);
+                String titleStr = item.getMusicalTitle();
+                String placeStr = item.getMusicalPlace();
+                String dateStr = item.getMusicalDate();
+
+                // 클릭 이벤트 테스트용 인텐트
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
+                startActivity(intent);
+
+//              실제 사용할 인텐트
+//                Intent getInfo = new Intent();//실행할 엑티비티명 입력
+//                getInfo.putExtra("image",imageBitmap); // 이미지 넘기기
+//                getInfo.putExtra("title",titleStr); // 제목 넘기기
+//                getInfo.putExtra("place",placeStr); // 장소 넘기기
+//                getInfo.putExtra("date",dateStr); // 기간 넘기기
+//                startActivity(getInfo);
+            }
+        });
+
+    }
+
+    //토글 버튼 클릭 이벤트 (클릭 이벤트 잘 처리되나 확인용)
+    public void musicalSub(View view) {
+        boolean on = ((ToggleButton) view).isChecked();
+        if (on) {
+            Toast.makeText(getApplicationContext(), "Sub",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "unSub",
+
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
