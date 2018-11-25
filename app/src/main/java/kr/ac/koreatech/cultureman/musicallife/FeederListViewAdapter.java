@@ -2,12 +2,18 @@ package kr.ac.koreatech.cultureman.musicallife;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -33,6 +39,7 @@ public class FeederListViewAdapter extends ArrayAdapter {
     }
 
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
@@ -45,13 +52,18 @@ public class FeederListViewAdapter extends ArrayAdapter {
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        FeederRadiusImageView musicalImageView = (FeederRadiusImageView) convertView.findViewById(R.id.musical_image);
+        //FeederRadiusImageView musicalImageView = (FeederRadiusImageView) convertView.findViewById(R.id.musical_image);
+
+        ImageView musicalImageView = (ImageView)convertView.findViewById(R.id.musical_image);
         TextView titleTextView = (TextView) convertView.findViewById(R.id.muscial_title);
         TextView placeTextView = (TextView) convertView.findViewById(R.id.muscial_place);
         TextView dateTextView = (TextView) convertView.findViewById(R.id.musical_date);
         ToggleButton subButton = (ToggleButton) convertView.findViewById(R.id.musical_subscribe_button);
 
 
+        GradientDrawable drawable = (GradientDrawable) context.getDrawable(R.drawable.rounding);
+        musicalImageView.setBackground(new ShapeDrawable(new OvalShape()));
+        musicalImageView.setClipToOutline(true);
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         FeederListViewItem feederListViewItem = feederList.get(position);
 
